@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<LINK href="css.css" type=text/css rel=stylesheet>
+</head>
+
+<body>
+
+
+<TABLE style="BORDER-COLLAPSE: collapse" cellSpacing="1" cellPadding="3" width="100%" border="0"><form name="addform" method="post" action="post.php">
+<TBODY>
+<TR>
+<TD colSpan="2" height="65">
+<TABLE style="BORDER-COLLAPSE: collapse" cellSpacing="1" cellPadding="4" width="100%" bgColor="#c0c0c0" border="0">
+<TBODY>
+<TR bgColor="#ffffff">
+<TD style="WIDTH: 147px" align="right" colSpan="1" height="32" rowSpan="1">
+<FONT face="宋体"><FONT color="#ff0033">***</FONT><STRONG>标题：</STRONG></FONT>
+</TD>
+<TD colSpan="2"><input name="title" type="text" size="30" id="title" onKeyUp="this.value=this.value.replace(/[<>]/i, '')"></TD>
+</TR>
+<TR bgColor="#ffffff">
+<TD style="WIDTH: 147px" align="right" colSpan="1" height="32" rowSpan="1">
+<FONT face="宋体"><FONT color="#ff0033">***</FONT><STRONG>正文：</STRONG></FONT>
+</TD>
+<TD colSpan="2"><textarea name="content" style="display:none"></textarea>
+<iframe ID="Editor" name="Editor" src="HtmlEditor/index.html?ID=content" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" style="height:238px;width:500px"></iframe>
+</TD>
+</TR>
+<TR bgColor="#ffffff">
+<TD style="WIDTH: 147px" height="32"></TD>
+<TD colSpan="2">
+<input type="submit" onClick="javascript:return checksignup()" name="Button1" value="提交" id="Button1" />
+ &nbsp;&nbsp;
+<INPUT type="reset" value="放弃"></TD>
+</TR>
+</TBODY>
+</TABLE>
+</TBODY>
+</form>
+</TABLE>
+
+</body>
+</html>

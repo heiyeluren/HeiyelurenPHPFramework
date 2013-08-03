@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head id="Head"><title>
+	Javascript Programming Conventions 
+</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<table align=center width="98%" cellspacing=0 cellpadding=0 border=0 style="margin-top:10px">
+<tr>
+	<td valign=top width="70%" style="padding:0">
+		<table align=center width="100%" height=90 cellspacing=0 cellpadding=5 border=0 bgcolor=white class=index>
+		<tr>
+			<td class=banner>
+			
+					
+<div class="block">
+	<h1 class="block_title"><a id="viewpost1_TitleUrl" href="http://www.cnitblog.com/alsan/articles/8069.html">Javascript Programming Conventions</a></h1>
+	<div class="post">
+		<div class="postcontent">
+			
+		<p style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">This document follows the basic outline of the Java Programming Conventions Guide, a copy of which may be found at <a href="http://geosoft.no/javastyle.html">http://geosoft.no/javastyle.html</a></p>
+		<div style="FONT-SIZE: 16px; COLOR: #800000; FONT-FAMILY: Verdana">Conventions</div>
+		<p style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">Any violation to this guide is allowed if it enhances readability.</p>
+		<p style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">Guidelines in this document are informed by discussions carried out among the Dojo core developers. The most weight has been given to considerations that impact external developer interaction with Dojo code and APIs. Rules such as whitespace placement are of a much lower order importance fo Dojo developers, but should be followed in the main in order to improve developer coordination.</p>
+		<div style="FONT-SIZE: 16px; COLOR: #800000; FONT-FAMILY: Verdana">Quick Reference</div>
+		<p style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">Table of core API naming constructs:</p>
+		<table style="FONT-SIZE: 12px; FONT-FAMILY: Verdana" border="1">
+				<tbody>
+						<tr>
+								<th>Construct</th>
+								<th>Convention</th>
+								<th>Comment</th>
+						</tr>
+						<tr>
+								<td>package</td>
+								<td>lower</td>
+								<td>never multiple words</td>
+						</tr>
+						<tr>
+								<td>class</td>
+								<td>UpperLower</td>
+								<td> </td>
+						</tr>
+						<tr>
+								<td>public method</td>
+								<td>lowerUpper</td>
+								<td>whether class or instance method. lower_case() is acceptable only if the particular function is mimicing another API.</td>
+						</tr>
+						<tr>
+								<td>public var</td>
+								<td>lowerUpper</td>
+								<td> </td>
+						</tr>
+						<tr>
+								<td>constant</td>
+								<td>UpperLower or UPPER_LOWER</td>
+								<td> </td>
+						</tr>
+				</tbody>
+		</table>
+		<p style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">Table of constructs that are not visible in the API, and therefore are optional and carry less weight of enforcement.</p>
+		<table style="FONT-SIZE: 12px; FONT-FAMILY: Verdana" border="1">
+				<tbody>
+						<tr>
+								<th>Construct</th>
+								<th>Convention</th>
+								<th>Comment</th>
+						</tr>
+						<tr>
+								<td>private method</td>
+								<td>_lowerUpper</td>
+								<td> </td>
+						</tr>
+						<tr>
+								<td>private var</td>
+								<td>_lowerUpper</td>
+								<td> </td>
+						</tr>
+						<tr>
+								<td>method args</td>
+								<td>_lowerUpper, lowerUpper</td>
+								<td> </td>
+						</tr>
+						<tr>
+								<td>local vars</td>
+								<td>_lowerUpper, lowerUpper</td>
+								<td> </td>
+						</tr>
+				</tbody>
+		</table>
+		<div style="FONT-SIZE: 16px; COLOR: #800000; FONT-FAMILY: Verdana">Naming Conventions</div>
+		<ol style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">
+				<li>Names representing packages SHOULD be in all lower case.</li>
+				<li>Names representing types (classes) MUST be nouns and written in UpperLower case: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">Account, EventHandler
+	</pre></li>
+				<li>Constants SHOULD be placed within a single object created as a holder for constants, emulating an Enum; the enum SHOULD be named appropriately, and members SHOULD be named using either UpperLower or UPPER_LOWER case: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">var NodeTypes = {
+	Element: 1,
+	DOCUMENT: 2
+}
+	</pre></li>
+				<li>Abbreviations and acronyms SHOULD NOT be uppercase when used as a name: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">getInnerHtml(), getXml(), XmlDocument
+	</pre></li>
+				<li>Names representing methods SHOULD be verbs or verb phrases: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">obj.getSomeValue();
+	</pre></li>
+				<li>Public class variables MUST be written using upperLower case.</li>
+				<li>Private class variables MAY be written using _upperLower (with preceding underscore): <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">var MyClass = function() {
+	var _buffer;
+	this.doSomething = function() {
+	};
+}
+	</pre></li>
+				<li>Variables that are intended to be private, but cannot be based on the semantics of Javascript, SHOULD prepended with a "_" (underscore) char: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">this._somePrivateVariable = statement;
+	</pre>NB Note that the above variable also follows the convention for a private variable. </li>
+				<li>Generic variables SHOULD have the same name as their type: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">setTopic(topic);	// where topic isTypeOf Topic
+	</pre></li>
+				<li>All names SHOULD be written in English.</li>
+				<li>Variables with a large scope SHOULD have globally unambiguious names, ambiguity MAY be distinguished by package membership. Variables with small or private scope MAY be more terse still.</li>
+				<li>The name of the return object is implicit, and SHOULD be avoided in a method name: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">getHandler();	// NOT getEventHandler();
+	</pre></li>
+				<li>Public names SHOULD be as clear as necessary and SHOULD avoid unclear shortenings and contractions: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">MouseEventHandler	// NOT MseEvtHdlr.
+	</pre>Note that, again, any context that can be determined by package membership SHOULD be used when determing if a variable name is clear. For example, a class that represents a mouse event handler: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">myobj.events.mouse.Handler	// NOT myobj.events.mouse.MouseEventHandler
+	</pre></li>
+				<li>Classes/constructors MAY be named basedon their inheritance pattern, with the base class to the right of the name: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">EventHandler
+UIEventHandler
+MouseEventHandler
+	</pre>NB The base class CAN be dropped from a name if it is obviously implicit in the name: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">MouseEventHandler	// as opposed to MouseUIEventHandler
+	</pre></li>
+		</ol>
+		<div style="FONT-SIZE: 16px; COLOR: #800000; FONT-FAMILY: Verdana">Specific Naming conventions</div>
+		<ol style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">
+				<li>Ther terms get/set SHOULD NOT used where a field is accessed, unless the variable being accessed is lexically private.</li>
+				<li>"is" prefix SHOULD be used for boolean variables and methods.<br />NB, Alternatives include "has", "can" and "should". </li>
+				<li>The term "compute" CAN be used in methods where something is computed.</li>
+				<li>The term "find" CAN be used in methods where something is looked up.</li>
+				<li>Ther terms "initialize" or "init" CAN be used where an object or a concept is established.</li>
+				<li>UI Control variables SHOULD be suffixed by the control type, ie: leftComboBox, topScrollPane.</li>
+				<li>Plural form MUST be used to name collections.</li>
+				<li>"num" prefix or "count" postfix SHOULD be used for variables representing a number of objects.</li>
+				<li>Iterator variables SHOULD be called "i", "j", "k", etc.</li>
+				<li>Compliment names MUST be used for compliment entities. ie: get/set, add/remove, create/destroy, start/stop, insert/delete, begin/end, etc.</li>
+				<li>Abbreviations in names SHOULD be avoided.</li>
+				<li>Negated boolean variable names MUST be avoided: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">isNotError	// are UNACCEPTABLE
+	</pre></li>
+				<li>Exception classes SHOULD be suffixed with "Exception" or "Error"...FIXME (trt) not sure about this?</li>
+				<li>Methods returning an object MAY be named after what they return, and methods returning void after what they do.</li>
+		</ol>
+		<div style="FONT-SIZE: 16px; COLOR: #800000; FONT-FAMILY: Verdana">Files</div>
+		<ol style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">
+				<li>Class or object-per-file guidelines are not yet determined.</li>
+				<li>Tabs (set to 4 spaces) SHOULD be used for indentation.</li>
+				<li>If your editor supports "file tags", please append the appropriate tag at the end of the file enable others to effortlessly obey the correct indentation guidelines for that file <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">// vim:ts=4:note:tw=0:
+	</pre></li>
+				<li>The incompletenes of split line MUST be made obvious: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">var someExpression = Expression1
+	+ Expression2
+	+ Expression3;
+	
+var o = someObject.get (
+		Expression1,
+		Expression2,
+		Expression3
+	);
+	</pre>Note the indentation for expression continuation is indented relative to the variable name, while indentation for parameters is relative to the method being called.<br /><br />Note also the position of the parenthesis in the method call; positioning SHOULD be similar to the use of block notation. </li>
+		</ol>
+		<div style="FONT-SIZE: 16px; COLOR: #800000; FONT-FAMILY: Verdana">Variables</div>
+		<ol style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">
+				<li>Variables SHOULD be initialized where they are declared and they SHOULD be declared in the smallest scope possible. A null initialization is acceptable.</li>
+				<li>Variables MUST never have a dual meaning.</li>
+				<li>Related variables of the same type CAN be declared in a common statement; unrelated variables SHOULD NOT be declared in the same statement.</li>
+				<li>Variables SHOULD be kept alive for a short a time as possible.</li>
+				<li>Loops/iterative declarations 
+<ol><li>Only loop control statements MUST be included in the "for()" construction.</li><li>Loop variables SHOULD be initialized immediately before the loop; loop variables in a "for" statement MAY be initialized in the "for" loop construction.</li><li>The use of "do...while" loops are acceptable (unlike in java)</li><li>The use of "break" and "continue" is not discouraged (unlike in Java)</li></ol></li>
+				<li>Conditionals 
+<ol><li>Complex conditional expressions SHOULD be avoided; use temporary boolean variables instead.</li><li>The nominal case SHOULD be put in the "if" part and the exception in the "else" part of an "if" statement.</li><li>Executable statements in conditionals MUST be avoided.</li></ol></li>
+				<li>Miscellaneous 
+<ol><li>The use of magic numbers in the code SHOULD be avoided; they SHOULD be declared using named "constants" instead.</li><li>Floating point constants SHOULD ALWAYS be written with decimal point ant at least one decimal.</li><li>Floating point constants SHOULD ALWAYS be written with a digit before the decimal point.</li></ol></li>
+		</ol>
+		<div style="FONT-SIZE: 16px; COLOR: #800000; FONT-FAMILY: Verdana">Layout</div>
+		<ol style="FONT-SIZE: 12px; FONT-FAMILY: Verdana">
+				<li>Block statements 
+<ol><li>Block layout SHOULD BE as illustrated below: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">while(!isDone) {
+	doSomething();
+	isDone = moreToDo();
+}
+				</pre></li><li>If statements SHOULD have the following form: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">if(someCondition) {
+	statements;
+} else if(someOtherCondition) {
+	statements;
+} else {
+	statements;
+}
+				</pre></li><li>for statements SHOULD be have the following form: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">for(initialization; condition; update) {
+	statements;
+}
+				</pre></li><li>while statement SHOULD follow the form in example VI.A.1</li><li>a do...while statement SHOULD have the following form: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">do {
+	statements;
+} while(condition);
+				</pre></li><li>a switch statement SHOULD have the following form: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">switch(condition) {
+	case ABC:
+		statements;
+		// fall through
+	case DEF:
+		statements;
+		break;
+	default:
+		statements;
+		break;
+}
+				</pre></li><li>a try...catch...finally statement SHOULD have the following form: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">try {
+	statements;
+} catch(ex) {
+	statements;
+} finally {
+	statements;
+}
+				</pre></li><li>single statement if-else, while or for MUST NOT be written without brackets, but CAN be written on the same line: <pre style="FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Courier New , Courier, Monospace; BACKGROUND-COLOR: #ffffff">if(condition) {statement;}
+while(condition) {statement;}
+for(initialization; condition; update) {statement;}
+				</pre></li></ol></li>
+				<li>Whitespace 
+<ol><li>Conventional operatiors MAY be surrounded by a space (including ternary operatiors).</li><li>Reserved words SHOULD be followed by a space.</li><li>Commas SHOULD be followed by a space.</li><li>Colons MAY be surrounded by a space.</li><li>Semi-colons in for statements SHOULD be followed by a space.</li><li>Semi-colons SHOULD NOT be spreceded by a space.</li><li>Functions/method calls SHOULD NOT be followed by a space. ie:<br />doSomething(someParameter); // NOT doSomething(someParameter) </li><li>Logical units within a block SHOULD be seperated by one blank line.</li><li>Statements MAY be aligned wherever this enhances readability.</li></ol></li>
+				<li>Comments 
+<ol><li>Tricky code SHOULD not be commented, but rewritten.</li><li>All comments SHOULD be written in English.</li><li>Comments SHOULD be indented relative to their position in the code, preceding or to the right of the code in question.</li><li>The declaration of collection variables SHOULD be followed by a comment stating the common type of the elements in the collection.</li><li>Comments SHOULD be included to explain BLOCKS of code, to explain the point of the following block.</li><li>Comments SHOULD NOT be included for every single line of code.</li></ol></li>
+		</ol>
+
+		</div></body>
+</html>

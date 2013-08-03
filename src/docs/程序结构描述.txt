@@ -1,0 +1,40 @@
+
+【目录描述】
+
+/			根目录
+/configs		配置文件目录
+/functions		函数文件目录
+/bases			基础类库目录
+/classes		应用类库目录
+/templates		模板文件目录
+/webroot		前端网页目录
+	/css		前台样式表目录
+	/js		前台脚本目录
+	/imgs		前台图片文件目录
+
+
+
+
+
+【程序结构】
+
+Web服务器 --> PHP脚本引擎 --> 数据库 --> 基础类库  --> 应用类库 --> 前台程序 --> 模板文件
+
+大致运行过程：
+
+前台程序调用应用类库，获取需要的数据，然后赋值到模板文件
+应用类库调用基础类库进行数据的提取和加工
+
+PS：目前的结构没有考虑模板引擎，比如Smarty之类的，主要是为了效率考虑，可以适当的按照需要增加模板引擎功能，同时应该考虑前端应用相应对模板的支持。
+    另外，/webroot/目录下的部分js文件必须通过仔细调试才能使用，请按照自己需要进行修改
+
+
+【编码规范】
+
+PHP编码规范遵循如下标准：http://www.phpe.net/html/php_coding_standard_cn.html
+CSS编码规范：http://www.ajaxw3c.com/webstandard/css_standard.html
+JavaScript编码规范：http://www.cnitblog.com/alsan/articles/8069.html
+
+（相应文档可以参考“编码规范”目录）
+
+

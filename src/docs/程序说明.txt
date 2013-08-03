@@ -1,0 +1,43 @@
+
+【目录描述】
+
+/			根目录
+/configs		配置文件目录
+/functions		函数文件目录
+/bases			基础类库目录
+/classes		应用类库目录
+/templates		模板文件目录
+/webroot		前端网页目录
+	/css		前台样式表目录
+	/js		前台脚本目录
+	/imgs		前台图片文件目录
+
+
+
+【后端基础类】
+异常处理		Exception.class.php 
+XML解析		XMLParser.class.php
+数据无关分页	Pager.class.php
+变量检查		VerifyUtil.class.php
+发送邮件		SMTP.class.php
+文件操作		File.class.php
+图像处理		Image.class.php
+多字节字符串处理	MultiString.class.php
+数据库访问	DB.class.php
+Socket操作	Socket.class.php
+
+基础类调用	main.class.php
+
+【后端其他】
+基础函数		/functions/global.function.php
+基础配置		/configs/common.config.php
+前端初始化	/webroot/init.php
+
+【前端程序】
+js基础函数	/webroot/js/global.js
+MD5函数		/webroot/js/hash.js
+非法内容过滤	/webroot/js/wordfilter.js
+日历操作		/webroot/js/cal/*
+区域列表		/webroot/js/area/*
+Prototype	/webroot/js/lib/prototype.js
+jQuery		/webroot/js/lib/jquery-latest.pack.js

@@ -1,0 +1,34 @@
+BODY {
+MARGIN: 0px;
+	SCROLLBAR-FACE-COLOR: #ffffff; FONT-SIZE: 12px; SCROLLBAR-HIGHLIGHT-COLOR: #cccccc; SCROLLBAR-SHADOW-COLOR: #ffffff; COLOR: #2e2e2e; SCROLLBAR-3DLIGHT-COLOR: #cccccc; LINE-HEIGHT: 20px; SCROLLBAR-ARROW-COLOR: #cccccc; SCROLLBAR-TRACK-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #000000; SCROLLBAR-BASE-COLOR: #cccccc
+}
+TD {
+	SCROLLBAR-FACE-COLOR: #ffffff; FONT-SIZE: 12px; SCROLLBAR-HIGHLIGHT-COLOR: #cccccc; SCROLLBAR-SHADOW-COLOR: #ffffff; COLOR: #2e2e2e; SCROLLBAR-3DLIGHT-COLOR: #cccccc; LINE-HEIGHT: 20px; SCROLLBAR-ARROW-COLOR: #cccccc; SCROLLBAR-TRACK-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #000000; SCROLLBAR-BASE-COLOR: #cccccc
+}
+TH {
+	SCROLLBAR-FACE-COLOR: #ffffff; FONT-SIZE: 12px; SCROLLBAR-HIGHLIGHT-COLOR: #cccccc; SCROLLBAR-SHADOW-COLOR: #ffffff; COLOR: #2e2e2e; SCROLLBAR-3DLIGHT-COLOR: #cccccc; LINE-HEIGHT: 20px; SCROLLBAR-ARROW-COLOR: #cccccc; SCROLLBAR-TRACK-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #000000; SCROLLBAR-BASE-COLOR: #cccccc
+}
+A:link {
+	COLOR: #2e2e2e; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #2e2e2e; TEXT-DECORATION: none
+}
+A:hover {
+	BORDER-BOTTOM-COLOR: #ff6600; COLOR: #ff6600; TEXT-DECORATION: none
+}
+.text {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: transparent
+}
+.button {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 50px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: transparent
+}
+.buttonb {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 20px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: transparent
+}
+.input {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 180px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: transparent
+}
+.inputb {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 30px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: transparent
+}

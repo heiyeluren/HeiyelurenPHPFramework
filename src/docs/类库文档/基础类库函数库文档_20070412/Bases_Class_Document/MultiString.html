@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class MultiString</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=gb2312'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> MultiString</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">¶à×Ö½Ú×Ö·û´®´¦ÀíÀà£¨GBK/GB2312£¬UTF8/Unicode£©</p>
+<p class="description"><p>°üº¬¶à×Ö½Ú×Ö·û´®´¦ÀíµÄ»ù±¾º¯Êý£¬·½±ã¶à×Ö½ÚµÄ²Ù×÷</p></p>
+		<p class="notes">
+			Located in <a class="field" href="_bases_MultiString_class_php.html">/bases/MultiString.class.php</a> (line <span class="field">17</span>)
+		</p>
+		
+				
+		<pre><a href="../Bases_Class_Document/ExceptionClass.html">ExceptionClass</a>
+   |
+   --MultiString</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">int</span>
+										<a href="#CStrlen" title="details" class="method-name">CStrlen</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$charset</span> = <span class="var-default">"gbk"</span>])
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#CSubstr" title="details" class="method-name">CSubstr</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$start</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$length</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$charset</span> = <span class="var-default">"gbk"</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$suffix</span> = <span class="var-default">false</span>])
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#cutSubstr" title="details" class="method-name">cutSubstr</a>
+											(<span class="var-type">$str_cut:ÐèÒª½Ø¶ÏµÄ×Ö·û´®</span>&nbsp;<span class="var-name">$str_cut</span>, <span class="var-type">$length:ÔÊÐí×Ö·û´®ÏÔÊ¾µÄ×î´ó³¤¶È</span>&nbsp;<span class="var-name">$length</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#gb2Utf8" title="details" class="method-name">gb2Utf8</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#GBIsChinese" title="details" class="method-name">GBIsChinese</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$s</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#GBStrlen" title="details" class="method-name">GBStrlen</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#GBSubstr" title="details" class="method-name">GBSubstr</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$len</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#GBSubstr2" title="details" class="method-name">GBSubstr2</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$src</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$start</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$length</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#utf2GB" title="details" class="method-name">utf2GB</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#utfStrlen" title="details" class="method-name">utfStrlen</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#utfSubstr" title="details" class="method-name">utfSubstr</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">$position</span>&nbsp;<span class="var-name">$position</span>, <span class="var-type">$length</span>&nbsp;<span class="var-name">$length</span>)
+									</div>
+							</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodCStrlen" id="CStrlen"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">CStrlen</span> (line <span class="line-number">148</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ÖÐÎÄ×Ö·û´®ÅÐ¶Ï³¤¶È£¨Ö§³ÖGB2312/GBK/UTF-8/BIG5£©</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ·µ»Ø×Ö·û´®µÄ³¤¶È</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			CStrlen
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$charset</span> = <span class="var-default">"gbk"</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: ÒªÈ¡³¤¶ÈµÄ×Ö´®</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$charset</span><span class="var-description">: ×Ö·û´®µÄ×Ö·û¼¯£¬°üÀ¨ÓÐ utf-8|gb2312|gbk|big5 ±àÂë</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodCSubstr" id="CSubstr"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">CSubstr</span> (line <span class="line-number">171</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ÖÐÎÄ×Ö·û´®½ØÈ¡£¨Ö§³ÖGB2312/GBK/UTF-8/BIG5£©</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ·µ»Ø½ÓÐø×Ö·û´®µÄ½á¹û</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			CSubstr
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$start</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$length</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$charset</span> = <span class="var-default">"gbk"</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$suffix</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: Òª½ØÈ¡µÄ×Ö´®</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$start</span><span class="var-description">: ½ØÈ¡ÆðÊ¼Î»ÖÃ</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$length</span><span class="var-description">: ½ØÈ¡³¤¶È</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$charset</span><span class="var-description">: ×Ö·û´®µÄ×Ö·û¼¯£¬°üÀ¨ÓÐ utf-8|gb2312|gbk|big5 ±àÂë</span>			</li>
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$suffix</span><span class="var-description">: ÊÇ·ñ¼ÓÎ²×º</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodcutSubstr" id="cutSubstr"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">cutSubstr</span> (line <span class="line-number">196</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">½ØÈ¡È«½ÇºÍ°ë½Ç»ìºÏµÄ×Ö·û´®ÒÔ±ÜÃâÂÒÂë</p>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			cutSubstr
+		</span>
+					(<span class="var-type">$str_cut:ÐèÒª½Ø¶ÏµÄ×Ö·û´®</span>&nbsp;<span class="var-name">$str_cut</span>, <span class="var-type">$length:ÔÊÐí×Ö·û´®ÏÔÊ¾µÄ×î´ó³¤¶È</span>&nbsp;<span class="var-name">$length</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$str_cut:ÐèÒª½Ø¶ÏµÄ×Ö·û´®</span>
+				<span class="var-name">$str_cut</span>			</li>
+					<li>
+				<span class="var-type">$length:ÔÊÐí×Ö·û´®ÏÔÊ¾µÄ×î´ó³¤¶È</span>
+				<span class="var-name">$length</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodgb2Utf8" id="gb2Utf8"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">gb2Utf8</span> (line <span class="line-number">211</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">GBK ×ª UTF8 ±àÂë</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			gb2Utf8
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+		
+		
+	</div>
+<a name="methodGBIsChinese" id="GBIsChinese"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">GBIsChinese</span> (line <span class="line-number">22</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ÅÐ¶ÏÄÚÈÝÀïÓÐÃ»ÓÐÖÐÎÄ(GBK)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			GBIsChinese
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$s</span>)
+			</div>
+	
+		
+		
+	</div>
+<a name="methodGBStrlen" id="GBStrlen"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">GBStrlen</span> (line <span class="line-number">29</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">»ñÈ¡×Ö·û´®³¤¶È(GBK)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			GBStrlen
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+		
+		
+	</div>
+<a name="methodGBSubstr" id="GBSubstr"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">GBSubstr</span> (line <span class="line-number">46</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">½ØÈ¡×Ö·û´®×Ó´®(GBK)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ·µ»Ø½ØÈ¡µ½µÄ×Ö·û´®</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			GBSubstr
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$len</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: Ô­Ê¼×Ö·û´®</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$len</span><span class="var-description">: ÐèÒª½ØÈ¡×Ö·û´®µÄ³¤¶È</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodGBSubstr2" id="GBSubstr2"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">GBSubstr2</span> (line <span class="line-number">65</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">½ØÈ¡×Ö·û´®×Ó´®º¯Êý2£¨GB)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ·µ»Ø½ØÈ¡µÄ×Ö·û´®</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			GBSubstr2
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$src</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$start</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$length</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$src</span><span class="var-description">: Ô´×Ö·û´®</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$start</span><span class="var-description">: ¿ªÊ¼½ØÈ¡µÄÎ»ÖÃ</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$length</span><span class="var-description">: ÐèÒª½ØÈ¡×Ö·û´®µÄ³¤¶È</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodutf2GB" id="utf2GB"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">utf2GB</span> (line <span class="line-number">223</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">UTF8 ×ª GBK ±àÂë</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			utf2GB
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+		
+		
+	</div>
+<a name="methodutfStrlen" id="utfStrlen"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">utfStrlen</span> (line <span class="line-number">87</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Í³¼Æ×Ö·û´®³¤¶È(UTF-8)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			utfStrlen
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+		
+		
+	</div>
+<a name="methodutfSubstr" id="utfSubstr"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">utfSubstr</span> (line <span class="line-number">112</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">½ØÈ¡×Ö·û´®(UTF-8)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ½ØÈ¡µÄ×Ö·û´®</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			utfSubstr
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">$position</span>&nbsp;<span class="var-name">$position</span>, <span class="var-type">$length</span>&nbsp;<span class="var-name">$length</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: Ô­Ê¼×Ö·û´®</span>			</li>
+					<li>
+				<span class="var-type">$position</span>
+				<span class="var-name">$position</span><span class="var-description">: ¿ªÊ¼½ØÈ¡Î»ÖÃ</span>			</li>
+					<li>
+				<span class="var-type">$length</span>
+				<span class="var-name">$length</span><span class="var-description">: ÐèÒª½ØÈ¡µÄÆ«ÒÆÁ¿</span>			</li>
+				</ul>
+		
+		
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../Bases_Class_Document/ExceptionClass.html">ExceptionClass</a></span></p>
+					<blockquote>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Bases_Class_Document/ExceptionClass.html#methodisError">ExceptionClass::isError()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Bases_Class_Document/ExceptionClass.html#methodraiseError">ExceptionClass::raiseError()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Bases_Class_Document/ExceptionClass.html#methodthrowError">ExceptionClass::throwError()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 12 Apr 2007 11:00:19 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</div></body>
+</html>

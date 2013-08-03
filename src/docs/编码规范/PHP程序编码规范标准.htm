@@ -1,0 +1,1526 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>PHP程序编码规范标准</TITLE>
+<META content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<style type="text/css">
+<!--
+body, p, td {
+	font-family: Georgia,Verdana,宋体;
+	font-size: 14px;
+}
+-->
+</style>
+</HEAD>
+<BODY bgColor=#ffffff text="#000000" link="#0000FF" vlink="#0000FF" alink="#FF0000">
+<!--msnavigation-->
+<!--msnavigation-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<H1>PHP 编程标准</H1>
+(<a href="php_coding_standard.html">English version</a>)
+<H2>最后修改日期: 2000-11-16</H2>
+<p><br>
+  PHP编程标准是经由Todd Hoff许可，基于《C++ 编程标准》为PHP而重写的，<br>
+  作者为<a 
+href="mailto:russlndr@online.no">Fredrik Kristiansen</a>，<br>
+  <BR>
+</p>
+<TABLE width="67%">
+  <TBODY> 
+  <TR>
+    <TD> 
+      <P><B>使用本标准，</B>如果您想拷贝一份留做自用的话，那是完全免费的，这也是我们制作它的原因。假如您发现了任何的错误又或者是有任何的改进，请您给笔者发一个email，以便笔者将它们合并到<a href="#changes">最新更新</a>中去。</P>
+    </TD></TR></TBODY></TABLE>
+<P> 
+<H1>目录 </H1>
+<UL>
+  <LI><A 
+  href="#intro"><b>介绍</b> </A> 
+    <UL>
+      <LI><A 
+    href="#important">标准化的重要性 </A> 
+      <LI><A 
+    href="#interp">解释 </A> 
+      <LI><A 
+    href="#accept">认同观点 </A> 
+      <LI><A 
+    href="#phases">项目的四个阶段</A> <A 
+    href="#flow"></A></LI>
+    </UL>
+  <LI><A 
+  href="#names"><B>命名规则</B> </A> 
+    <UL>
+      <LI><A 
+    href="#descriptive">合适的命名 </A> 
+      <LI><A 
+    href="#noabbrev">缩写词不要全部使用大写字母 </A> 
+      <LI><A 
+    href="#classnames">类命名 </A> 
+      <LI><A 
+    href="#classlnames">类库命名 </A> 
+      <LI><A 
+    href="#methodsnames">方法命名 </A> 
+      <LI><A 
+    href="#attrnames">类属性命名</A> 
+      <LI><A 
+    href="#margnames">方法中参数命名 </A> 
+      <LI><A 
+    href="#stacknames">变量命名</A> 
+      <LI><A 
+    href="#pnames"></A><A 
+    href="#rnames">引用变量和函数返回引用</A> 
+      <LI><A 
+    href="#gnames">全局变量 </A> 
+      <LI><A 
+    href="#gconstants">定义命名 / 全局常量</A> 
+      <LI><A 
+    href="#snames">静态变量 </A> 
+      <LI><A 
+    href="#tnames"></A><A 
+    href="#enames"></A><A 
+    href="#cnames">函数命名 </A> 
+      <LI><A 
+    href="#fext">php文件扩展名 </A></LI>
+    </UL>
+    <A name=docidx></A> 
+  <LI><B>文档规则</B> 
+    <UL>
+      <LI><A 
+    href="#comments">评价注释 </A> 
+      <LI><A 
+    href="#cstas">Comments 
+        Should Tell a Story </A> 
+      <LI><A 
+    href="#cdd">Document 
+        Decisions </A> 
+      <LI><A href="#cuh">使用标头说明 </A> 
+      <LI><A 
+    href="#mge">Make Gotchas 
+        Explicit </A> 
+      <LI><A 
+    href="#two">Interface 
+        and Implementation Documentation </A> 
+      <LI><A 
+    href="#dirdoc">目录文档 </A><A 
+    href="#idoc"></A><A 
+    href="#blockdoc"></A></LI>
+    </UL>
+  <LI><B>复杂性管理规则</B> 
+    <UL>
+      <LI><A 
+    href="#layering">Layering 
+        </A> 
+      <LI><A 
+    href="#abstract"></A><A 
+    href="#liskov"></A><A 
+    href="#open">Open/Closed 
+        Principle </A> 
+      <LI><A 
+    href="#register"></A><A 
+    href="#delegation"></A><A 
+    href="#demeter"></A><A 
+    href="#contract">Design 
+        by Contract </A></LI>
+    </UL>
+  <LI><B>类规则</B> 
+    <UL>
+      <LI><A 
+    href="#cflayout"></A><A 
+    href="#classlayout"></A><A 
+    href="#pubpropriorder"></A><A 
+    href="#pubpropri"></A><A 
+    href="#cfile"></A><A 
+    href="#namespace"></A><A 
+    href="#guards"></A><A 
+    href="#req"></A><A 
+    href="#mlayout"></A><A 
+    href="#multimethods"></A><A 
+    href="#accessor">Different 
+        Accessor Styles </A> 
+      <LI><A 
+    href="#nowork">别在对象架构期做实际的工作 
+        </A> 
+      <LI><A 
+    href="#destexcept"></A><A 
+    href="#const"></A><A 
+    href="#nooper"></A><A 
+    href="#thinfat">Thin 
+        vs. Fat Class Interfaces </A> 
+      <LI><A 
+    href="#shortmethods">短方法 </A></LI>
+    </UL>
+  <LI><B>进程规则</B> 
+    <UL>
+      <LI><A 
+    href="#design">Use a 
+        Design Notation and Process </A> 
+      <LI><A 
+    href="#usecases">Using 
+        Use Cases </A> 
+      <LI><A 
+    href="#codereview">Code 
+        Reviews </A> 
+      <LI><A 
+    href="#getsome">Create 
+        a Source Code Control System Early and Not Often</A> 
+      <LI><A 
+    href="#bugs">Create 
+        a Bug Tracking System Early and Not Often</A> 
+      <LI><A href="#rcs">RCS关键词、更改记录和历史记录规则</A> 
+      <LI><A 
+    href="#resp">Honor Responsibilities 
+        </A><A 
+    href="#autocheck"></A></LI>
+    </UL>
+  <LI><B>格式化</B> 
+    <UL>
+      <LI><A 
+    href="#brace">大括号 {} 规则 </A> 
+      <LI><A 
+    href="#indent">缩进/制表符/空格 规则 </A> 
+      <LI><A 
+    href="#parens">小括号、关键词和函数 规则</A> 
+      <LI><A 
+    href="#linelen"></A><A 
+    href="#ifthen"><I>If Then Else</I> 格式</A> 
+      <LI><A 
+    href="#switch"><I>switch</I> 格式 </A> 
+      <LI><A 
+    href="#goto"><I>continue,break</I> 和 <i>? </i>的使用 </A> 
+      <LI><A href="#one">每行一个语句</A> 
+      <LI><a 
+    href="#aligndecls">声明块的定位</a></LI>
+    </UL>
+  <LI><B>流行神话</B> 
+    <UL>
+      <LI><A 
+    href="#promiss">Promise 
+        of OO </A><A 
+    href="#embedded"></A></LI>
+    </UL>
+  <LI><B>杂项</B> 
+    <UL>
+      <LI><A 
+    href="#nomagic">不要不可思议的数字</A> 
+      <LI><A 
+    href="#errorret">错误返回检测规则</A> 
+      <LI><A 
+    href="#useenums"></A><A 
+    href="#macros"></A><A 
+    href="#nztest">不要采用缺省值测试非零值</A> 
+      <LI><A 
+    href="#boolean">布尔逻辑类型</A> 
+      <LI><A 
+    href="#eassign">通常避免嵌入式的赋值</A> 
+      <LI><A 
+    href="#reuse">重用您和其他人的艰苦工作</A> 
+      <LI><A 
+    href="#streams"></A><A 
+    href="#if0">使用if (0)来注释外部代码块</A>
+      <LI><A 
+    href="#ifdef"></A><A 
+    href="#callc"></A><A 
+    href="#alignment"></A><A 
+    href="#misc">其他杂项</A></LI>
+    </UL>
+  </LI>
+</UL>
+<HR>
+<A name=intro></A>
+<H1>介绍 </H1>
+<A name=important></A>
+<H2>标准化的重要性 </H2>
+标准化问题在某些方面上让每个人头痛，让人人都觉得大家处于同样的境地。这有助于让这些建<br>
+议在许多的项目中不断演进，许多公司花费了许多星期逐子字逐句的进行争论。标准化不是特殊<br>
+的个人风格，它对本地改良是完全开放的。 
+<H3>优点 </H3>
+当一个项目尝试着遵守公用的标准时，会有以下好处： 
+<UL>
+  <LI>程序员可以了解任何代码，弄清程序的状况 
+  <LI>新人可以很快的适应环境 
+  <LI>防止新接触php的人出于节省时间的需要，自创一套风格并养成终生的习惯 
+  <LI>防止新接触php的人一次次的犯同样的错误 
+  <LI>在一致的环境下，人们可以减少犯错的机会 
+  <LI>程序员们有了一致的敌人 :-)</LI>
+</UL>
+<H3>缺点 </H3>
+现在轮到坏处了: 
+<UL>
+  <LI>因为标准由一些不懂得php的人所制定，所以标准通常看上去很傻
+  <LI>因为标准跟我做的不一样，所以标准通常看上去很傻
+  <LI>标准降低了创造力
+  <LI>标准在长期互相合作的人群中是没有必要的
+  <LI>标准强迫太多的格式
+  <LI>总之人们忽视标准</LI>
+</UL>
+<H3>讨论</H3>
+<p>许多项目的经验能得出这样的结论：采用编程标准可以使项目更加顺利地完成。标准是成功的关<br>
+  键么？当然不。但它们可以帮助我们，而且我们需要我们能得到的所有的帮助！老实说，对一个<br>
+  细节标准的大部分争论主要是源自自负思想。对一个合理的标准的很少决定能被说为是缺乏技术<br>
+  性的话，那只是口味的原因罢了。所以，要灵活的控制自负思想，记住，任何项目都取决于团队<br>
+  合作的努力。<br>
+</p>
+<P><A name=interp></A>
+<H2>解释 </H2>
+<H3>惯例 </H3>
+在本文档中使用“要”字所指的是使用本规范的所有项目需要遵守规定的标准。 
+<P>使用“应该”一词的作用是指导项目定制项目细节规范。因为项目必须适当的包括 (include），<br>
+  排除(exclude)或定制（tailor）需求。
+<P>使用“可以”一词的作用与“应该”类似，因为它指明了可选的需求。
+<P>
+<H3>标准实施 </H3>
+首先应该在开发小组的内部找出所有的最重要的元素，也许标准对你的状况还不够恰当。它可能已经概<br>
+括了 重要的问题，也可能还有人对其中的某些问题表示强烈的反对。<br>
+<br>
+无论在什么情况下，只要最后顺利的话，人们将成熟的明白到这个标准是合理的，然后其他的程序员们<br>
+也会发现它的合理性，并觉得带着一些保留去遵循这一标准是值得的。<br>
+<br>
+如果没有自愿的合作，可以制定需求：标准一定要经过代码的检验。<br>
+<br>
+如果没有检验的话，这个解决方案仅仅是一个建立在不精确的基础上的一大群可笑的人。 
+<P><A name=accept></A>
+<H2>认同观点 </H2>
+<OL>
+  <LI>这行不通；
+  <LI>也许可行吧，但是它既不实用又无聊；
+  <LI>这是真的，而且我也告诉过你啊； 
+  <LI>这个是我先想到的； 
+  <LI>本来就应该这样。 </LI>
+</OL>
+如果您带着否定的成见而来看待事物的话，请您保持开放的思想。你仍可以做出它是废话的结论，但是做<br>
+出结论的方法就是你必须要能够接受不同的思想。请您给自己一点时间去做到它。<br>
+<br>
+<A name=phases></A> 
+<H2>项目的四个阶段</H2>
+<OL>
+  <LI>数据库结构 
+  <LI>设计
+  <LI>数据层
+  <LI>HTML层<BR>
+    <A name=flow></A></LI>
+</OL>
+<HR>
+<A name=names></A>
+<H1>命名规则 </H1>
+<A name=descriptive></A>
+<h3>合适的命名 </h3>
+<p>命名是程序规划的核心。古人相信只要知道一个人真正的名字就会获得凌驾于那个人之上的不可思议的力<br>
+  量。只要你给事物想到正确的名字，就会给你以及后来的人带来比代码更强的力量。别笑！<br>
+  <br>
+  名字就是事物在它所处的生态环境中一个长久而深远的结果。总的来说，只有了解系统的程序员才能为系<br>
+  统取出最合适的名字。如果所有的命名都与其自然相适合，则关系清晰，含义可以推导得出，一般人的推<br>
+  想也能在意料之中。<br>
+  <br>
+  如果你发觉你的命名只有少量能和其对应事物相匹配的话， 最好还是重新好好再看看你的设计吧。<br>
+  <br>
+</p>
+<P>
+<H3><B>类命名</B></H3>
+<UL>
+  <LI>在为类（class ）命名前首先要知道它是什么。如果通过类名的提供的线索，你还是想不起这个类是<br>
+    什么 的话，那么你的设计就还做的不够好。 <br>
+    <br>
+  <LI>超过三个词组成的混合名是容易造成系统各个实体间的混淆，再看看你的设计，尝试使用（CRC Se-<br>
+    ssion card)看看该命名所对应的实体是否有着那么多的功用。<br>
+    <br>
+  <LI>对于派生类的命名应该避免带其父类名的诱惑，一个类的名字只与它自身有关，和它的父类叫什么无<br>
+    关。<br>
+    <br>
+  <LI>有时后缀名是有用的，例如：如果你的系统使用了代理（agent ），那么就把某个部件命名为“下<br>
+    载代理”（DownloadAgent）用以真正的传送信息。
+</UL>
+<H3>方法和函数命名 </H3>
+<UL>
+  <LI>通常每个<b><i>方法</i></b>和<i><b>函数</b></i>都是执行一个动作的，所以对它们的命名应该清楚的说明它们是做什么的：用<br>
+    CheckForErrors()代替ErrorCheck()，用DumpDataToFile()代替DataFile()。这么做也可以使功能和<br>
+    数据成为更可区分的物体。<br>
+    <br>
+  <LI>有时后缀名是有用的: 
+    <UL>
+      <LI><I>Max</I> - 含义为某实体所能赋予的最大值。
+      <LI><I>Cnt</I> - 一个运行中的计数变量的当前值。
+      <LI><I>Key</I> - 键值。 </LI>
+    </UL>
+    <P>例如：RetryMax 表示最多重试次数，RetryCnt 表示当前重试次数。 
+    <P></P>
+  <LI>有时前缀名是有用的： 
+    <UL>
+      <LI><I>Is</I> - 含义为问一个关于某样事物的问题。无论何时，当人们看到Is就会知道这是一个问题。
+      <LI><I>Get</I> - 含义为取得一个数值。 
+      <LI><I>Set</I> - 含义为设定一个数值</LI>
+    </UL>
+    <P>例如：IsHitRetryLimit。
+    <P></P>
+  </LI>
+</UL>
+<P><A name=noabbrev></A>
+<H2>缩写词不要全部使用大写字母</H2>
+<UL>
+  <LI>无论如何，当遇到以下情况，你可以用首字母大写其余字母小写来代替全部使用大写字母的方法来表<br>
+    示缩写词。<BR>
+    <BR>
+    使用: GetHtmlStatistic. <BR>
+    不使用: GetHTMLStatistic.<BR>
+  </LI>
+</UL>
+<H3>理由 </H3>
+<UL>
+  <LI>当命名含有缩略词时，人们似乎有着非常不同的直觉。统一规定是最好，这样一来，命名的含义就完<br>
+    全可以预知了。 
+    <P>举个<I>NetworkABCKey</I>的例子，注意C是应该是ABC里面的C还是key里面的C，这个是很令人费解的。有些<br>
+      人不在意这些，其他人却很讨厌这样。所以你会在不同的代码里看到不同的规则，使得你不知道怎么<br>
+      去叫它。</P>
+  </LI>
+</UL>
+<H3>例如</H3>
+<PRE>   class FluidOz             // 不要写成 FluidOZ
+   class GetHtmlStatistic       // 不要写成 GetHTMLStatistic
+</PRE>
+<P>
+<HR>
+<A name=classnames></A> 
+<H2>类命名 </H2>
+<UL>
+  <LI>使用大写字母作为词的分隔，其他的字母均使用小写 
+  <LI>名字的首字母使用大写
+  <LI>不要使用下划线('_')</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>根据很多的命名方式，大部分人认为这样是最好的方式。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>   class NameOneTwo
+
+   class Name
+</PRE>
+<P>
+<HR>
+<A name=classlnames></A> 
+<H2><b>类库命名</b> </H2>
+<UL>
+  <LI>目前命名空间正在越来越广泛的被采用，以避免不同厂商和团体类库间的类名冲突。<br>
+    <br>
+  <LI>当尚未采用命名空间的时候，为了避免类名冲突，一般的做法是在类名前加上独特的前缀，两个字符就<br>
+    可以了，当然多用一些会更好。</LI>
+</UL>
+<H3>例如</H3>
+John Johnson的数据结构类库可以用Jj做为前缀，如下： 
+<PRE>   class JjLinkList
+   {
+   }
+</PRE>
+<P>
+<HR>
+<A name=methodsnames></A> 
+<H2>方法命名 </H2>
+<UL>
+  <LI>采用与类命名一致的规则</LI>
+</UL>
+<H3>理由 </H3>
+<UL>
+  <LI>使用所有不同规则的大部分人发现这是最好的折衷办法。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>   class NameOneTwo
+   {
+      function DoIt() {};
+      function HandleError() {};
+   }
+</PRE>
+<P>
+<HR>
+<A name=attrnames></A> 
+<H2>类属性命名 </H2>
+<UL>
+  <LI>属性命名应该以字符‘m’为前缀。
+  <LI>前缀‘m’后采用于类命名一致的规则。
+  <LI>‘m’总是在名字的开头起修饰作用，就像以‘r’开头表示引用一样。</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>前缀'm'防止类属性和方法名发生任何冲突。你的方法名和属性名经常会很类似，特别是存取元素。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>   class NameOneTwo
+   {
+      function VarAbc() {};
+      function ErrorNumber() {};
+<BR>      var mVarAbc;
+      var mErrorNumber;
+      var mrName;
+   }
+</PRE>
+<P>
+<HR>
+<A name=margnames></A> 
+<H2>方法中参数命名 </H2>
+<UL>
+  <LI>第一个字符使用小写字母。 
+  <LI>在首字符后的所有字都按照类命名规则首字符大写。</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>你可以随时知道那个变量对应那个变量。 
+  <LI>你可以使用与类名相似的名称而不至于产生重名冲突。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>   class NameOneTwo
+   {
+      function StartYourEngines(
+                &amp;$rSomeEngine,
+                &amp;$rAnotherEngine);
+   }
+</PRE>
+<P>
+<HR>
+<A name=stacknames></A> 
+<H2>变量命名</H2>
+<UL>
+  <LI>所有字母都使用小写 
+  <LI>使用'_'作为每个词的分界。</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>通过这一途径，代码中变量的作用域是清晰的。 
+  <LI>所有的变量在代码中都看起来不同，容易辨认。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>function HandleError($errorNumber)
+{
+      $error = OsErr();
+      $time_of_error = OsErr-&gt;getTimeOfError;
+      $error_processor = OsErr-&gt;getErrorProcessor;
+}
+</PRE>
+<P>
+<HR>
+<A name=rnames></A>
+<H2>引用变量和函数返回引用</H2>
+<UL>
+  <LI>引用必须带‘r’前缀</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>使得类型不同的变量容易辨认
+  <LI>它可以确定哪个方法返回可更改对象，哪个方法返回不可更改对象。
+</UL>
+<H3>例如</H3>
+<PRE>   class Test
+   {
+      var mrStatus;
+<BR>      function DoSomething(&amp;$rStatus) {};
+      function &amp;rStatus() {};
+   }
+</PRE>
+<P>
+<HR>
+<A name=gnames></A>
+<H2>全局变量</H2>
+<UL>
+  <LI>全局变量应该带前缀‘g’。</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>知道一个变量的作用域是非常重要的。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>    global $gLog;
+    global &amp;$grLog;
+</PRE>
+<P>
+<HR>
+<A name=gconstants></A> 
+<H2>定义命名 / 全局常量</H2>
+<UL>
+  <LI>全局常量用'_'分隔每个单词。</LI>
+</UL>
+<H3>理由</H3>
+这是命名全局常量的传统。你要注意不要与其它的定义相冲突。 
+<H3>例如</H3>
+<PRE><BR>define("A_GLOBAL_CONSTANT", "Hello world!");
+</PRE>
+<HR>
+<A name=snames></A>
+<H2>静态变量</H2>
+<UL>
+  <LI>静态变量应该带前缀‘s’。</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>知道一个变量的作用域是非常重要的。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>function test()<BR>{<BR>  static $msStatus = 0;
+}
+</PRE>
+<P>
+<HR>
+<A name=cnames></A>
+<H2>函数命名</H2>
+<UL>
+  <LI>函数名字采用C GNU的惯例，所有的字母使用小写字母，使用'_'分割单词。</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>这样可以更易于区分相关联的类名。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>function some_bloody_function()
+{
+}
+</PRE>
+<P>
+<HR>
+<A name=errorret></A> 
+<H1>错误返回检测规则 </H1>
+<UL>
+  <LI>检查所有的系统调用的错误信息，除非你要忽略错误。 
+  <LI>为每条系统错误消息定义好系统错误文本以便include。</LI>
+</UL>
+<P>
+<HR>
+<A name=brace></A> 
+<H1>大括号 {} 规则</H1>
+在三种主要的大括号放置规则中，有两种是可以接受的，如下的第一种是最好的： 
+<UL>
+  <LI>将大括号放置在关键词下方的同列处： 
+    <PRE>   if ($condition)       while ($condition)
+   {                     {
+      ...                   ...
+   }                     }
+</PRE>
+  <LI>传统的UNIX的括号规则是，首括号与关键词同行，尾括号与关键字同列： 
+    <PRE>   if ($condition) {     while ($condition) {
+      ...                   ...
+   }                     }
+</PRE>
+  </LI>
+</UL>
+<H2>理由</H2>
+<UL>
+  <LI>引起剧烈争论的非原则的问题可通过折衷的办法解决，两种方法任意一种都是可以接受的，然而对于大<br>
+    多数人来说更喜欢第一种。原因就是心理研究学习范畴的东西了。 
+    <P> 对于更喜欢第一种还有着更多的原因。如果您使用的字符编辑器支持括号匹配功能的话（例如vi），最<br>
+      重要的就是有一个好的样式。为什么？我们说当你有一大块的程序而且想知道这一大块程序是在哪儿结<br>
+      束的话。你先移到开始的括号，按下按钮编辑器就会找到与之对应的结束括号，例如：
+    <PRE>     if ($very_long_condition &amp;&amp; $second_very_long_condition)
+     {
+        ...
+     }
+     else if (...)
+     {
+	...
+     }
+</PRE>
+    从一个程序块移动到另一个程序块只需要用光标和你的括号匹配键就可以了，不需要来回的移动到行末去<br>
+    找匹配的括号。</LI>
+</UL>
+<P>
+<HR>
+<A name=indent></A>
+<H1>缩进/制表符/空格 规则</H1>
+<UL>
+  <LI>使用制表符缩进。 
+  <LI>使用三到四个空格为每层次缩进。 
+  <LI>不再使用只要一有需要就缩排的方法。对与最大缩进层数，并没有一个固定的规矩，假如缩进层数大于四或<br>
+    者五层的时候，你可以考虑着将代码因数分解(factoring out code)。</LI>
+</UL>
+<H2>理由</H2>
+<UL>
+  <LI>许多编程者支持制表符。
+  <LI>Tabs was invented for a rason 
+  <LI>当人们使用差异太大的制表符标准的话，会使阅读代码变得很费力。
+  <LI>如此多的人愿意限定最大的缩进层数，它通常从未被看作是一件工作。我们相信程序员们会明智的选择嵌套<br>
+    的深度。</LI>
+</UL>
+<H2>例如 </H2>
+<PRE>
+   function func()
+   {
+      if (something bad)
+      {
+         if (another thing bad)
+         {
+            while (more input)
+            {
+            }
+         }
+      }
+   }
+</PRE>
+<P>
+<HR>
+<A name=parens></A>
+<H1>小括号、关键词和函数 规则</H1>
+<UL>
+  <LI> 不要把小括号和关键词紧贴在一起，要用空格隔开它们。
+  <LI>不要把小括号和函数名紧贴在一起。 
+  <LI>除非必要，不要在Return返回语句中使用小括号。</LI>
+</UL>
+<H2>理由</H2>
+<UL>
+  <LI>关键字不是函数。如果小括号紧贴着函数名和关键字，二者很容易被看成是一体的。 </LI>
+</UL>
+<H2>例如</H2>
+<PRE>
+    if (condition)
+    {
+    }
+
+    while (condition)
+    {
+    }
+
+    strcmp($s, $s1);
+
+    return 1;
+</PRE>
+<P>
+<HR>
+<A name=rcs></A>
+<H1>RCS关键词、更改记录和历史记录规则</H1>
+直接使用RCS关键词的规则必须改变，其中包括使用CVS等类似的支持RCS风格关键词的源代码控制系统： 
+<UL>
+  <LI>别在文件以内使用 RCS 关键词。
+  <LI>别在文件中保存历史修改记录。
+  <LI>别在文件中保存作者信息记录。</LI>
+</UL>
+<H2>理由</H2>
+<UL>
+  <LI>The reasoning is your source control system already keeps all this 
+  information. There is no reason to clutter up source files with duplicate 
+  information that: 
+  <UL>
+    <LI>makes the files larger 
+    <LI>makes doing diffs difficult as non source code lines change 
+    <LI>makes the entry into the file dozens of lines lower in the file which 
+    makes a search or jump necessary for each file 
+    <LI>is easily available from the source code control system and does not 
+    need embedding in the file </LI></UL>
+  <LI>When files must be sent to other organizations the comments may contain 
+  internal details that should not be exposed to outsiders. </LI></UL>
+<P>
+<HR>
+<A name=nowork></A> 
+<H1>别在对象架构期做实际的工作</H1>
+别在对象架构期做真实的工作，在架构期初始化变量和/或做任何不会有失误的事情。 
+<P>当完成对象架构时，为该对象建立一个Open()方法，Open()方法应该以对象实体命名。
+<H2>理由</H2>
+<UL>
+  <LI>构造不能返回错误 。</LI>
+</UL>
+<H2>例如</H2>
+<PRE>   class Device
+   {
+      function Device()    { /* initialize and other stuff */ }
+      function Open()  { return FAIL; }
+   };
+
+   $dev = new Device;
+   if (FAIL == $dev-&gt;Open()) exit(1);
+</PRE>
+<P>
+<P>
+<P>
+<HR>
+<A name=ifthen></A>
+<H1><I>If Then Else</I> 格式</H1>
+<H2>布局 </H2>
+<p>这由程序员决定。不同的花括号样式会产生些微不同的样观。一个通用方式是：</p>
+<PRE>   if (条件1)                 // 注释
+   {
+   }
+   else if (条件2)            // 注释
+   {
+   }
+   else                           // 注释
+   {
+   }
+</PRE>
+如果你有用到<I>else if</I> 语句的话，通常最好有一个<i>else</i>块以用于处理未处理到的其他情况。可以的话<br>
+放一个记录信息注释在<i>else</i>处，即使在<i>else</i>没有任何的动作。 
+<P>
+<H2>条件格式</H2>
+总是将恒量放在等号/不等号的左边，例如： 
+<P>if ( 6 == $errorNum ) ... 
+<P>一个原因是假如你在等式中漏了一个等号，语法检查器会为你报错。第二个原因是你能立刻找到数值<br>
+  而不是在你的表达式的末端找到它。需要一点时间来习惯这个格式，但是它确实很有用。
+<P>
+<P>
+<HR>
+<A name=switch></A>
+<H1><I>switch</I> 格式</H1>
+<UL>
+  <LI>Falling through a case statement into the next case statement shall be permitted 
+    as long as a comment is included. 
+  <LI><i>default</i> case总应该存在，它应该不被到达，然而如果到达了就会触发一个错误。
+  <LI>如果你要创立一个变量，那就把所有的代码放在块中。</LI>
+</UL>
+<H2>例如</H2>
+<PRE>   switch (...)
+   {
+      case 1:
+         ...
+      // FALL THROUGH
+
+      case 2:
+      {
+         $v = get_week_number();
+         ...
+      }
+      break;
+
+      default:
+   }
+</PRE>
+<P>
+<HR>
+<A name=goto></A>
+<H1><I>continue,break</I> 和 <I>? </I>的使用: </H1>
+<H2>Continue 和 Break </H2>
+Continue 和 break 其实是变相的隐蔽的 goto方法。 
+<P>Continue 和 break 像 goto 一样，它们在代码中是有魔力的，所以要节俭（尽可能少）的使用它们。<br>
+  使用了这一简单的魔法，由于一些未公开的原因，读者将会被定向到只有上帝才知道的地方去。
+<P>Continue有两个主要的问题：
+<UL>
+  <LI>它可以绕过测试条件。
+  <LI>它可以绕过等/不等表达式。</LI>
+</UL>
+<P>看看下面的例子，考虑一下问题都在哪儿发生：
+<PRE>while (TRUE)
+{
+   ...
+   // A lot of code
+   ...
+   if (/* some condition */) {
+      continue;
+   }
+   ...
+   // A lot of code
+   ...
+   if ( $i++ &gt; STOP_VALUE) break;
+}
+</PRE>
+注意："A lot of code"是必须的，这是为了让程序员们不能那么容易的找出错误。 
+<P>通过以上的例子，我们可以得出更进一步的规则：continue 和 break 混合使用是引起灾难的正确方法。
+<P>
+<H2>?: </H2>
+麻烦在于人民往往试着在 ? 和 : 之间塞满了许多的代码。以下的是一些清晰的连接规则： 
+<UL>
+  <LI>把条件放在括号内以使它和其他的代码相分离。
+  <LI>如果可能的话，动作可以用简单的函数。
+  <LI>把所做的动作，“?”，“:”放在不同的行，除非他们可以清楚的放在同一行。</LI>
+</UL>
+<H3>例如</H3>
+<PRE>   (condition) ? funct1() : func2();
+
+   or
+
+   (condition)
+      ? long statement
+      : another long statement;
+</PRE>
+<P>
+<HR>
+<A name=aligndecls></A> 
+<H1>声明块的定位</H1>
+<UL>
+  <LI>声明代码块需要对齐。</LI>
+</UL>
+<H2>理由Justification </H2>
+<UL>
+  <LI>清晰。 
+  <LI>变量初始化的类似代码块应该列表。
+  <LI>The ??token should be adjacent to the type, not the name. </LI></UL>
+<H2>例如</H2>
+<PRE>   var       $mDate
+   var&amp;      $mrDate
+   var&amp;      $mrName
+   var       $mName
+
+   $mDate    = 0;
+   $mrDate   = NULL;
+   $mrName   = 0;
+   $mName    = NULL;
+</PRE>
+<P>
+<P>
+<HR>
+<A name=one></A> 
+<H1>每行一个语句</H1>
+除非这些语句有很密切的联系，否则每行只写一个语句。 
+<P>
+<HR>
+<A name=shortmethods></A>
+<H1>短方法</H1>
+<UL>
+  <LI>方法代码要限制在一页内。</LI>
+</UL>
+<H3>理由</H3>
+<UL>
+  <LI>这个思想是，每一个方法代表着一个完成单独目的的技术。
+  <LI>从长远来说，过多的无效参数是错误的。
+  <LI>调用函数比不调用要慢，但是这需要详细考虑做出决定（见premature optimization 未完善的优化）。</LI>
+</UL>
+<P>
+<HR>
+<A name=docnull></A>
+<H1>记录所有的空语句</H1>
+总是记录下for或者是while的空块语句，以便清楚的知道该段代码是漏掉了，还是故意不写的。 
+<PRE><TT>
+   while ($dest++ = $src++)
+      ;         // VOID
+</TT></PRE>
+<P>
+<HR>
+<A name=nztest></A> 
+<H1>不要采用缺省方法测试非零值</H1>
+不要采用缺省值测试非零值，也就是使用： 
+<PRE><TT>
+   if (FAIL != f())
+</TT></PRE>
+比下面的方法好： 
+<PRE><TT>
+   if (f())
+</TT></PRE>
+即使 FAIL 可以含有 0 值 ，也就是PHP认为false的表示。在某人决定用-1代替0作为失败返回值的时候，<br>
+一个显式的测试就可以帮助你了。就算是比较值不会变化也应该使用显式的比较；例如：<b>if (!($bufsize % strlen($str)))</b><br>
+应该写成：<b>if (($bufsize % strlen($str)) == 0)</b>以表示测试的数值（不是布尔）型。一个经常出<br>
+问题的地方就是使用strcmp来测试一个字符等式，结果永远也不会等于缺省值。 
+<P>非零测试采用基于缺省值的做法，那么其他函数或表达式就会受到以下的限制: 
+<UL>
+  <LI>只能返回0表示失败，不能为/有其他的值。 
+  <LI>命名以便让一个真(true)的返回值是绝对显然的，调用函数IsValid()而不是Checkvalid()。 </LI>
+</UL>
+<P>
+<HR>
+<A name=boolean></A>
+<H1>布尔逻辑类型 </H1>
+<P>大部分函数在FALSE的时候返回0，但是发挥非0值就代表TRUE，因而不要用1（TRUE，YES，诸如此类）等式检测一个布尔值，应该用0（FALSE，NO，诸如此类）的不等式来代替：
+<PRE><TT>
+   if (TRUE == func()) { ...
+</TT></PRE>
+应该写成： 
+<PRE><TT>
+   if (FALSE != func()) { ...
+</TT></PRE>
+<P>
+<HR>
+<A name=eassign></A>
+<H1>通常避免嵌入式的赋值</H1>
+有时候在某些地方我们可以看到嵌入式赋值的语句，那些结构不是一个比较好的少冗余，可读性强的方法。 
+<P><PRE><TT>
+   while ($a != ($c = getchar()))
+   {
+      process the character
+   }
+</TT></PRE>
+<P>++和--操作符类似于赋值语句。因此，出于许多的目的，在使用函数的时候会产生副作用。使用嵌入式赋值<br>
+  提高运行时性能是可能的。无论怎样，程序员在使用嵌入式赋值语句时需要考虑在增长的速度和减少的可维<br>
+  护性两者间加以权衡。例如：
+<PRE><TT>
+   a = b + c;
+   d = a + r;
+</TT></PRE>
+不要写成： 
+<PRE><TT>
+   d = (a = b + c) + r;
+</TT></PRE>
+虽然后者可以节省一个周期。但在长远来看，随着程序的维护费用渐渐增长，程序的编写者对代码渐渐遗忘，<br>
+就会减少在成熟期的最优化所得。 
+<P>
+<HR>
+<A name=reuse></A>
+<H1>重用您和其他人的艰苦工作</H1>
+跨工程的重用在没有一个通用结构的情况下几乎是不可能的。对象符合他们现有的服务需求，不同的过程有着<br>
+不同的服务需求环境，这使对象重用变得很困难。 
+<P>开发一个通用结构需要预先花费许多的努力来设计。当努力不成功的时候，无论出于什么原因，有几种办法推<br>
+  荐使用：
+<P>
+<H2>请教！给群组发Email求助</H2>
+这个简单的方法很少被使用。因为有些程序员们觉得如果他向其他人求助，会显得自己水平低，这多傻啊!做新<br>
+的有趣的工作，不要一遍又一遍的做别人已经做过的东西。 
+<P><B>如果你需要某些事项的源代码，如果已经有某人做过的话，就向群组发email求助。结果会很惊喜哦！</B> 
+<P>在许多大的群组中，个人往往不知道其他人在干什么。你甚至可以发现某人在找一些东西做，并且自愿为你写代<br>
+  码，如果人们在一起工作，外面就总有一个金矿。
+<H2>告诉！当你在做事的时候，把它告诉所有人 </H2>
+如果你做了什么可重用的东西的话，让其他人知道。别害羞，也不要为了保护自豪感而把你的工作成果藏起来。<br>
+一旦养成共享工作成果的习惯，每个人都会获得更多。 
+<H2>Don't be Afraid of Small Libraries </H2>
+对于代码重用，一个常见的问题就是人们不从他们做过的代码中做库。一个可重用的类可能正隐蔽在一个程序目<br>
+录并且决不会有被分享的激动，因为程序员不会把类分拆出来加入库中。 
+<P>这样的其中一个原因就是人们不喜欢做一个小库，对小库有一些不正确感觉。把这样的感觉克服掉吧，电脑才不<br>
+  关心你有多少个库呢。
+<P>如果你有一些代码可以重用，而且不能放入一个已经存在的库中，那么就做一个新的库吧。如果人们真的考虑重<br>
+  用的话，库不会在很长的一段时间里保持那么小的。
+<P>If you are afraid of having to update makefiles when libraries are recomposed 
+or added then don't include libraries in your makefiles, include the idea of 
+<B>services</B>. Base level makefiles define services that are each composed of 
+a set of libraries. Higher level makefiles specify the services they want. When 
+the libraries for a service change only the lower level makefiles will have to 
+change. 
+<P>
+<H2>Keep a Repository </H2>Most companies have no idea what code they have. And 
+most programmers still don't communicate what they have done or ask for what 
+currently exists. The solution is to keep a repository of what's available. 
+<P>In an ideal world a programmer could go to a web page, browse or search a 
+list of packaged libraries, taking what they need. If you can set up such a 
+system where programmers voluntarily maintain such a system, great. If you have 
+a librarian in charge of detecting reusability, even better. 
+<P>Another approach is to automatically generate a repository from the source 
+code. This is done by using common class, method, library, and subsystem headers 
+that can double as man pages and repository entries. 
+<P>
+<HR>
+<A name=comments></A>
+<H1>评价注释 </H1>
+<A name=cstas></A>
+<H2>注释应该是讲述一个故事</H2>
+Consider your comments a story describing 
+the system. Expect your comments to be extracted by a robot and formed into a 
+man page. Class comments are one part of the story, method signature comments 
+are another part of the story, method arguments another part, and method 
+implementation yet another part. All these parts should weave together and 
+inform someone else at another point of time just exactly what you did and why. 
+<A name=cdd></A>
+<H2>Document Decisions </H2>Comments should document decisions. At every point 
+where you had a choice of what to do place a comment describing which choice you 
+made and why. Archeologists will find this the most useful information. <A 
+name=cuh></A>
+<H2>使用标头说明</H2>
+<p>利用类似<a 
+href="http://www.joelinoff.com/ccdoc/index.html">ccdoc</a>的文档抽取系统。在这一文档的其他部分描述的是怎么利用ccdoc记录一个类和方法。<br>
+  这些标头说明可以以这样的一个方式来提取并分析和加以组织，它们不像一般的标头一样是无用的。<br>
+  因此花时间去填上他吧。 </p>
+<P>
+<H2>注释布局 </H2>
+<p>工程的每部分都有特定的注释布局。 </p>
+<p><A name=mge></A> </p>
+<H2>Make Gotchas Explicit </H2>Explicitly comment variables changed out of the 
+normal control flow or other code likely to break during maintenance. Embedded 
+keywords are used to point out issues and potential problems. Consider a robot 
+will parse your comments looking for keywords, stripping them out, and making a 
+report so people can make a special effort where needed. 
+<P>
+<H3>Gotcha Keywords </H3>
+<UL>
+  <LI><B>:TODO: topic</B><BR>Means there's more to do here, don't forget. 
+  <P></P>
+  <LI><B>:BUG: [bugid] topic</B><BR>means there's a Known bug here, explain it 
+  and optionally give a bug ID. 
+  <P></P>
+  <LI><B>:KLUDGE:</B><BR>When you've done something ugly say so and explain how 
+  you would do it differently next time if you had more time. 
+  <P></P>
+  <LI><B>:TRICKY:</B><BR>Tells somebody that the following code is very tricky 
+  so don't go changing it without thinking. 
+  <P></P>
+  <LI><B>:WARNING:</B><BR>Beware of something. 
+  <P></P>
+  <LI><B>:PHARSER:</B><BR>Sometimes you need to work around a pharser problem. 
+  Document it. The problem may go away eventually. 
+  <P></P>
+  <LI><B>:ATTRIBUTE: value</B><BR>The general form of an attribute embedded in a 
+  comment. You can make up your own attributes and they'll be extracted. 
+  <P></P></LI></UL>
+<P>
+<H3>Gotcha Formatting </H3>
+<UL>
+  <LI>Make the gotcha keyword the first symbol in the comment. 
+  <LI>Comments may consist of multiple lines, but the first line should be a 
+  self-containing, meaningful summary. 
+  <LI>The writer's name and the date of the remark should be part of the 
+  comment. This information is in the source repository, but it can take a quite 
+  a while to find out when and by whom it was added. Often gotchas stick around 
+  longer than they should. Embedding date information allows other programmer to 
+  make this decision. Embedding who information lets us know who to ask. 
+</LI></UL>
+<H3>Example </H3><PRE>   // :TODO: tmh 960810: possible performance problem
+   // We should really use a hash table here but for now we'll
+   // use a linear search.
+
+   // :KLUDGE: tmh 960810: possible unsafe type cast
+   // We need a cast here to recover the derived type. It should
+   // probably use a virtual method or template.
+</PRE>
+<H2>See Also </H2>See <A 
+href="#two">Interface and 
+Implementation Documentation </A>for more details on how documentation should be 
+laid out. 
+<P>
+<HR>
+<A name=two></A>
+<H1>Interface and Implementation Documentation </H1>There are two main audiences 
+for documentation: 
+<UL>
+  <LI>Class Users 
+  <LI>Class Implementors </LI></UL>With a little forethought we can extract both 
+types of documentation directly from source code. 
+<H2>Class Users </H2>Class users need class interface information which when 
+structured correctly can be extracted directly from a header file. When filling 
+out the header comment blocks for a class, only include information needed by 
+programmers who use the class. Don't delve into algorithm implementation details 
+unless the details are needed by a user of the class. Consider comments in a 
+header file a man page in waiting. 
+<H2>Class Implementors </H2>Class implementors require in-depth knowledge of how 
+a class is implemented. This comment type is found in the source file(s) 
+implementing a class. Don't worry about interface issues. Header comment blocks 
+in a source file should cover algorithm issues and other design decisions. 
+Comment blocks within a method's implementation should explain even more. 
+<P>
+<HR>
+<A name=dirdoc></A>
+<H1>目录文档</H1>
+所有的目录下都需要具有README文档，其中包括： 
+<UL>
+  <LI>该目录的功能及其包含内容
+  <LI>一个对每一文件的在线说明（带有link），每一个说明通常还应该提取文件标头的一些属性名字。 
+  <LI>包括设置、使用说明
+  <LI>指导人民如何连接相关资源： 
+    <UL>
+      <LI>源文件索引
+      <LI>在线文档
+      <LI>纸文档
+      <LI>设计文档</LI>
+    </UL>
+  <LI>其他对读者有帮助的东西</LI>
+</UL>
+考虑一下，当每个原有的工程人员走了，在6个月之内来的一个新人，那个孤独受惊吓的探险者通过整个<br>
+工程的源代码目录树，阅读说明文件，源文件的标头说明等等做为地图，他应该有能力穿越整个工程。 
+<P>
+<HR>
+<A name=design></A>
+<H1>Use a Design Notation and Process </H1>Programmers need to have a common 
+language for talking about coding, designs, and the software process in general. 
+This is critical to project success. 
+<P>Any project brings together people of widely varying skills, knowledge, and 
+experience. Even if everyone on a project is a genius you will still fail 
+because people will endlessly talk past each other because there is no common 
+language and processes binding the project together. All you'll get is massive 
+fights, burnout, and little progress. If you send your group to training they 
+may not come back seasoned experts but at least your group will all be on the 
+same page; a team. 
+<P>There are many popular methodologies out there. The point is to do some 
+research, pick a method, train your people on it, and use it. Take a look at the 
+top of this page for links to various methodologies. 
+<P>You may find the <B>CRC</B> (class responsibility cards) approach to teasing 
+out a design useful. Many others have. It is an informal approach encouraging 
+team cooperation and focusing on objects doing things rather than objects having 
+attributes. There's even a whole book on it: Using CRC Cards by Nancy M. 
+Wilkinson. 
+<HR>
+<A name=usecases></A>
+<H1>Using Use Cases </H1>A <I>use case</I> is a generic description of an entire 
+transaction involving several objects. A use case can also describe the 
+behaviour of a set of objects, such as an organization. A use case model thus 
+presents a collection of use cases and is typically used to specify the behavior 
+of a whole application system together with one or more external actors that 
+interact with the system. 
+<P>An individual use case may have a name (although it is typically not a simple 
+name). Its meaning is often written as an informal text description of the 
+external actors and the sequences of events between objects that make up the 
+transaction. Use cases can include other use cases as part of their behaviour. 
+<H2>Requirements Capture </H2>Use cases attempt to capture the requirements for 
+a system in an understandable form. The idea is by running through a set of use 
+case we can verify that the system is doing what it should be doing. 
+<P>Have as many use cases as needed to describe what a system needs to 
+accomplish. 
+<H2>The Process </H2>
+<UL>
+  <LI>Start by understanding the system you are trying to build. 
+  <LI>Create a set of use cases describing how the system is to be used by all 
+  its different audiences. 
+  <LI>Create a class and object model for the system. 
+  <LI>Run through all the use cases to make sure your model can handle all the 
+  cases. Update your model and create new use cases as necessary. </LI></UL>
+<P>
+<HR>
+<A name=open></A>
+<H1>Open/Closed Principle </H1>The Open/Closed principle states a class must be 
+open and closed where: 
+<UL>
+  <LI>open means a class has the ability to be extended. 
+  <LI>closed means a class is closed for modifications other than extension. The 
+  idea is once a class has been approved for use having gone through code 
+  reviews, unit tests, and other qualifying procedures, you don't want to change 
+  the class very much, just extend it. </LI></UL>The Open/Closed principle is a 
+pitch for stability. A system is extended by adding new code not by changing 
+already working code. Programmers often don't feel comfortable changing old code 
+because it works! This principle just gives you an academic sounding 
+justification for your fears :-) 
+<P>In practice the Open/Closed principle simply means making good use of our old 
+friends abstraction and polymorphism. Abstraction to factor out common processes 
+and ideas. Inheritance to create an interface that must be adhered to by derived 
+classes. 
+<P>
+<HR>
+<A name=contract></A>
+<H1>Design by Contract </H1>The idea of design by contract is strongly related 
+to <A href="#liskov">LSP 
+</A>. A contract is a formal statement of what to expect from another party. In 
+this case the contract is between pieces of code. An object and/or method states 
+that it does X and you are supposed to believe it. For example, when you ask an 
+object for its volume that's what you should get. And because volume is a 
+verifiable attribute of a thing you could run a series of checks to verify 
+volume is correct, that is, it satisfies its contract. 
+<P>The contract is enforced in languages like Eiffel by pre and post condition 
+statements that are actually part of the language. In other languages a bit of 
+faith is needed. 
+<P>Design by contract when coupled with language based verification mechanisms 
+is a very powerful idea. It makes programming more like assembling spec'd parts. 
+
+<P>
+<HR>
+<A name=misc></A>
+<H1>其他杂项</H1>
+这一部分包含着各种各样的该做的和不该做的。 
+<P>
+<UL>
+  <LI>在需要用到离散的数值使，不要使用浮点数变量。采用浮点数来做循环计数器无异于向自己的脚<br>
+    开枪。测试浮点数时总要使用 &lt;= 或 =&gt; ，永远不要用 = 或 =&gt; 。 
+    <P></P>
+  <LI>不要使用程序自动美化器，得益于好的程序样式的主要的人就是程序员自己，特别是刚开着手代<br>
+    码、算法设计的程序员，使用程序自动美化器仅仅能根据语法来更正程序，因此当对空白和缩进<br>
+    的注意有很大需要时，它是不可能做到的。正常的细心注意细节的程序员们能很好的用清晰直观<br>
+    的样式来完成一个函数或文件（换句话来说，一些直观的样式是意向的规定而不是程序自动美化<br>
+    器能读懂的智慧）。马虎的程序员应该学习细致的程序员，不要依赖程序自动美化器来增加程序<br>
+    的可读性。最初的美化器是必须分析源代码的程序，复杂的美化器不值得通过这样获得好处，美<br>
+    化器最好用于生成总的机器建立（machine-generated）格式代码。 
+    <P></P>
+  <LI>对逻辑表达式第二个 = 不小心的忽略是一个问题，以下显得混乱而且更像是错误： 
+    <PRE>        if ($abool= $bbool) { ... }
+     </PRE>
+    程序员在这里真的是要赋值么？一般常常是，但通常又不是这样。这样避免引起这样的混乱呢？解<br>
+    决方案就是不要这样做，利用显式和隐式的判断测试，推荐的方法是在做测试前先做赋值： 
+    <PRE><TT>
+       $abool= $bbool;
+       if ($abool) { ... }
+    </TT></PRE>
+  </LI>
+</UL>
+<HR>
+<A name=if0></A>
+<H1>使用if (0)来注释外部代码块 </H1>
+有时需要注释大段的测试代码，最简单的方法就是使用if (0)块： 
+<PRE>   function example()
+   {
+      great looking code
+
+      if (0) {
+      lots of code
+      }
+
+      more code
+    }
+</PRE>
+<P>你不能使用/**/，因为注释内部不能包含注释，而大段的程序中可以包含注释，不是么？
+<HR>
+<A name=accessor></A>
+<H1>Different Accessor Styles </H1>
+<H2>Why Accessors? </H2>Access methods provide access to the physical or logical 
+attributes of an object. We disallow direct access to attributes to break 
+dependencies, the reason we do most things. Directly accessing an attribute 
+exposes implementation details about the object. 
+<P>To see why ask yourself: 
+<UL>
+  <LI>What if the object decided to provide the attribute in a way other than 
+  physical containment? 
+  <LI>What if it had to do a database lookup for the attribute? 
+  <LI>What if a different object now contained the attribute? </LI></UL>If any of 
+the above changed code would break. An object makes a contract with the user to 
+provide access to a particular attribute; it should not promise how it gets 
+those attributes. Accessing a physical attribute makes such a promise. 
+<H2>Implementing Accessors </H2>There are three major idioms for creating 
+accessors. 
+<H3>Get/Set </H3><PRE>   class X
+   {
+      function GetAge()        { return $this-&gt;mAge; }
+      function SetAge($age)    { $mAge= $age; }
+      var $mAge;
+   }
+</PRE>
+<H3>One Method Name </H3><PRE>   class X
+   {
+      function Age()           { return $mAge; }
+      function Age($age)       { $mAge= $age; }
+      var $mAge;
+   }
+</PRE>Similar to Get/Set but cleaner. Use this approach when not using the 
+<I>Attributes as Objects</I> approach. 
+<H3>Attributes as Objects </H3><PRE>   class X
+   {
+      function Age()           { return $mAge; }
+      function rAge()          { return &amp;$mAge; }
+
+      function Name()          { return mName; }
+      function rName()         { return &amp;$mName; }
+
+      var $mAge;
+      var $mName;
+   }<BR>
+   X $x;
+   $x-&gt;rName()= "test";
+</PRE>The above two attribute examples shows the strength and weakness of the 
+Attributes as Objects approach. 
+<P>When using <I>rAge()</I>, which is not a real object, the variable is set 
+directly because <I>rAge()</I> returns a <B>reference</B>. The object can do no 
+checking of the value or do any representation reformatting. For many simple 
+attributes, however, these are not horrible restrictions. 
+<HR>
+<A name=layering></A>
+<H1>Layering </H1>Layering is the primary technique for reducing complexity in a 
+system. A system should be divided into layers. Layers should communicate 
+between adjacent layers using well defined interfaces. When a layer uses a 
+non-adjacent layer then a layering violation has occurred. 
+<P>A layering violation simply means we have dependency between layers that is 
+not controlled by a well defined interface. When one of the layers changes code 
+could break. We don't want code to break so we want layers to work only with 
+other adjacent layers. 
+<P>Sometimes we need to jump layers for performance reasons. This is fine, but 
+we should know we are doing it and document appropriately. 
+<P>
+<HR>
+<A name=codereview></A>
+<H1>Code Reviews </H1>If you can make a formal code review work then my hat is 
+off to you. Code reviews can be very useful. Unfortunately they often degrade 
+into nit picking sessions and endless arguments about silly things. They also 
+tend to take a lot of people's time for a questionable payback. 
+<P>My god he's questioning code reviews, he's not an engineer! 
+<P>Not really, it's the form of code reviews and how they fit into normally late 
+chaotic projects is what is being questioned. 
+<P>First, code reviews are <B>way too late</B> to do much of anything useful. 
+What needs reviewing are requirements and design. This is where you will get 
+more bang for the buck. 
+<P>Get all relevant people in a room. Lock them in. Go over the class design and 
+requirements until the former is good and the latter is being met. Having all 
+the relevant people in the room makes this process a deep fruitful one as 
+questions can be immediately answered and issues immediately explored. Usually 
+only a couple of such meetings are necessary. 
+<P>If the above process is done well coding will take care of itself. If you 
+find problems in the code review the best you can usually do is a rewrite after 
+someone has sunk a ton of time and effort into making the code "work." 
+<P>You will still want to do a code review, just do it offline. Have a couple 
+people you trust read the code in question and simply make comments to the 
+programmer. Then the programmer and reviewers can discuss issues and work them 
+out. Email and quick pointed discussions work well. This approach meets the 
+goals and doesn't take the time of 6 people to do it. 
+<P>
+<HR>
+<A name=getsome></A>
+<H1>Create a Source Code Control System Early and Not Often </H1>A common build 
+system and source code control system should be put in place as early as 
+possible in a project's lifecycle, preferably before anyone starts coding. 
+Source code control is the structural glue binding a project together. If 
+programmers can't easily use each other's products then you'll never be able to 
+make a good reproducible build and people will piss away a lot of time. It's 
+also hell converting rogue build environments to a standard system. But it seems 
+the right of passage for every project to build their own custom environment 
+that never quite works right. 
+<P>Some issues to keep in mind: 
+<UL>
+  <LI>Shared source environments like CVS usually work best in largish projects. 
+
+  <LI>If you use CVS use a <I>reference tree</I> approach. With this approach a 
+  master build tree is kept of various builds. Programmers checkout source 
+  against the build they are working on. They only checkout what they need 
+  because the make system uses the build for anything not found locally. Using 
+  the <I>-I and -L</I> flags makes this system easy to setup. Search locally for 
+  any files and libraries then search in the reference build. This approach 
+  saves on disk space and build time. 
+  <LI>Get a lot of disk space. With disk space as cheap it is there is no reason 
+  not to keep plenty of builds around. 
+  <LI>Make simple things simple. It should be dead simple and well documented on 
+  how to: 
+  <UL>
+    <LI>check out modules to build 
+    <LI>how to change files 
+    <LI>how to add new modules into the system 
+    <LI>how to delete modules and files 
+    <LI>how to check in changes 
+    <LI>what are the available libraries and include files 
+    <LI>how to get the build environment including all compilers and other tools 
+    </LI></UL>
+  <P>Make a web page or document or whatever. New programmers shouldn't have to 
+  go around begging for build secrets from the old timers. </P>
+  <LI>On checkins log comments should be useful. These comments should be 
+  collected every night and sent to interested parties. </LI></UL>
+<H2>Sources </H2>If you have the money many projects have found <A 
+href="http://www.pureatria.com/">Clear Case </A>a good system. Perfectly 
+workable systems have been build on top of GNU make and CVS. CVS is a freeware 
+build environment built on top of RCS. Its main difference from RCS is that is 
+supports a shared file model to building software. 
+<P>
+<HR>
+<A name=bugs></A>
+<H1>Create a Bug Tracking System Early and Not Often </H1>The earlier people get 
+used to using a bug tracking system the better. If you are 3/4 through a project 
+and then install a bug tracking system it won't be used. You need to install a 
+bug tracking system early so people will use it. 
+<P>Programmers generally resist bug tracking, yet when used correctly it can 
+really help a project: 
+<UL>
+  <LI>Problems aren't dropped on the floor. 
+  <LI>Problems are automatically routed to responsible individuals. 
+  <LI>The lifecycle of a problem is tracked so people can argue back and forth 
+  with good information. 
+  <LI>Managers can make the big schedule and staffing decisions based on the 
+  number of and types of bugs in the system. 
+  <LI>Configuration management has a hope of matching patches back to the 
+  problems they fix. 
+  <LI>QA and technical support have a communication medium with developers. 
+</LI></UL>Not sexy things, just good solid project improvements. 
+<P>FYI, it's not a good idea to reward people by the number of bugs they fix :-) 
+
+<P>Source code control should be linked to the bug tracking system. During the 
+part of a project where source is frozen before a release only checkins 
+accompanied by a valid bug ID should be accepted. And when code is changed to 
+fix a bug the bug ID should be included in the checkin comments. 
+<P>
+<H2>Sources </H2>Several projects have found <A 
+href="http://www.pureatria.com/products/pureddts/">DDTS </A>a workable system (I 
+'ve not verified this link for this PHP release, DDTS may not work for PHP). 
+There is also a GNU bug tracking system available. Roll your own is a popular 
+option but using an existing system seems more cost efficient. 
+<P>
+<HR>
+<A name=resp></A>
+<H1>Honor Responsibilities </H1>Responsibility for software modules is scoped. 
+Modules are either the responsibility of a particular person or are common. 
+Honor this division of responsibility. Don't go changing things that aren't your 
+responsibility to change. Only mistakes and hard feelings will result. 
+<P>Face it, if you don't own a piece of code you can't possibly be in a position 
+to change it. There's too much context. Assumptions seemingly reasonable to you 
+may be totally wrong. If you need a change simply ask the responsible person to 
+change it. Or ask them if it is OK to make such-n-such a change. If they say OK 
+then go ahead, otherwise holster your editor. 
+<P>Every rule has exceptions. If it's 3 in the morning and you need to make a 
+change to make a deliverable then you have to do it. If someone is on vacation 
+and no one has been assigned their module then you have to do it. If you make 
+changes in other people's code try and use the same style they have adopted. 
+<P>Programmers need to mark with comments code that is particularly sensitive to 
+change. If code in one area requires changes to code in an another area then say 
+so. If changing data formats will cause conflicts with persistent stores or 
+remote message sending then say so. If you are trying to minimize memory usage 
+or achieve some other end then say so. Not everyone is as brilliant as you. 
+<P>The worst sin is to flit through the system changing bits of code to match 
+your coding style. If someone isn't coding to the standards then ask them or ask 
+your manager to ask them to code to the standards. Use common courtesy. 
+<P>Code with common responsibility should be treated with care. Resist making 
+radical changes as the conflicts will be hard to resolve. Put comments in the 
+file on how the file should be extended so everyone will follow the same rules. 
+Try and use a common structure in all common files so people don't have to guess 
+on where to find things and how to make changes. Checkin changes as soon as 
+possible so conflicts don't build up. 
+<P>As an aside, module responsibilities must also be assigned for bug tracking 
+purposes. 
+<HR>
+<A name=fext></A>
+<H1>PHP文件扩展名</H1>
+我见过许多种PHP文件的扩展名（.html, .php, .php3, .php4, .phtml, .inc, .class...）<BR>
+<UL>
+  <LI>所有浏览者可见页面使用.html
+  <LI>所有类、函数库文件使用.php</LI>
+</UL>
+<H2>理由</H2>
+<UL>
+  <LI>扩展名描述的是那种数据是用户将会收到的。PHP是解释为HTML的。</LI>
+</UL>
+<P>
+<HR>
+<A name=nomagic></A>
+<H1>不要不可思议的数字</H1>
+一个在源代码中使用了的赤裸裸的数字是不可思议的数字，因为包括作者，在三个月内，没人它的含义。例如： 
+<P><PRE>if      (22 == $foo) { start_thermo_nuclear_war(); }
+else if (19 == $foo) { refund_lotso_money(); }
+else if (16 == $foo) { infinite_loop(); }
+else                { cry_cause_im_lost(); }
+</PRE>
+在上例中22和19的含义是什么呢？如果一个数字改变了，或者这些数字只是简单的错误，你会怎么想？ 
+<P>使用不可思议的数字是该程序员是业余运动员的重要标志，这样的程序员从来没有在团队环境中工作过，<br>
+  又或者是为了维持代码而不得不做的，否则他们永远不会做这样的事。
+<P>你应该用define()来给你想表示某样东西的数值一个真正的名字，而不是采用赤裸裸的数字，例如：
+<PRE>define("PRESIDENT_WENT_CRAZY", "22");
+define("WE_GOOFED", "19");
+define("THEY_DIDNT_PAY", "16");
+
+if      (PRESIDENT_WENT_CRAZY == $foo) { start_thermo_nuclear_war(); }
+else if (WE_GOOFED            == $foo) { refund_lotso_money(); }
+else if (THEY_DIDNT_PAY       == $foo) { infinite_loop(); }
+else                                   { happy_days_i_know_why_im_here(); }
+</PRE>
+现在不是变得更好了么？ 
+<P><A name=promiss></A>
+<HR>
+
+<H1>Promise of OO </H1>OO has been hyped to the extent you'd figure it would 
+solve world hunger and usher in a new era of world peace. Not! OO is an 
+approach, a philosophy, it's not a recipe which blindly followed yields quality. 
+
+<P>Robert Martin put OO in perspective: 
+<UL>
+  <LI>OO, when properly employed, does enhance the reusability of software. But 
+  it does so at the cost of complexity and design time. Reusable code is more 
+  complex and takes longer to design and implement. Furthermore, it often takes 
+  two or more tries to create something that is even marginally reusable. 
+  <LI>OO, when properly employed, does enhance the software's resilience to 
+  change. But it does so at the cost of complexity and design time. This trade 
+  off is almost always a win, but it is hard to swallow sometimes. 
+  <LI>OO does not necessarily make anything easier to understand. There is no 
+  magical mapping between the software concepts and every human's map of the 
+  real world. Every person is different. What one person percieves to be a 
+  simple and elegant design, another will perceive as convoluted and opaque. 
+  <LI>If a team has been able, by applying point 1 above, to create a repository 
+  of reusable items, then development times can begin to shrink significantly 
+  due to reuse. 
+  <LI>If a team has been able, by applying point 2 above, to create software 
+  that is resilient to change, then maintenance of that software will be much 
+  simpler and much less error prone. </LI></UL>
+<P>
+<HR>
+<A name=thinfat></A>
+<H1>Thin vs. Fat Class Interfaces </H1>How many methods should an object have? 
+The right answer of course is just the right amount, we'll call this the 
+Goldilocks level. But what is the Goldilocks level? It doesn't exist. You need 
+to make the right judgment for your situation, which is really what programmers 
+are for :-) 
+<P>The two extremes are <B>thin</B> classes versus <B>thick</B> classes. Thin 
+classes are minimalist classes. Thin classes have as few methods as possible. 
+The expectation is users will derive their own class from the thin class adding 
+any needed methods. 
+<P>While thin classes may seem "clean" they really aren't. You can't do much 
+with a thin class. Its main purpose is setting up a type. Since thin classes 
+have so little functionality many programmers in a project will create derived 
+classes with everyone adding basically the same methods. This leads to code 
+duplication and maintenance problems which is part of the reason we use objects 
+in the first place. The obvious solution is to push methods up to the base 
+class. Push enough methods up to the base class and you get <B>thick</B> 
+classes. 
+<P>Thick classes have a lot of methods. If you can think of it a thick class 
+will have it. Why is this a problem? It may not be. If the methods are directly 
+related to the class then there's no real problem with the class containing 
+them. The problem is people get lazy and start adding methods to a class that 
+are related to the class in some willow wispy way, but would be better factored 
+out into another class. Judgment comes into play again. 
+<P>Thick classes have other problems. As classes get larger they may become 
+harder to understand. They also become harder to debug as interactions become 
+less predictable. And when a method is changed that you don't use or care about 
+your code will still have to be retested, and rereleased. 
+<P>
+<HR>
+
+<H1><A name=changes></A>Recent Changes </H1>
+<OL>
+  <LI>2000-11-16. Release </LI></OL>
+<HR>
+
+<CENTER><A href="http://www.possibility.com/Cpp"></A>
+<P>&copy; Copyright 1995-2000. Todd Hoff and Fredrik Kristiansen. All rights 
+reserved. </P></CENTER><!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+<hr width="90%">
+      <div align="center"> 
+
+      </div>
+
+</td></tr><!--msnavigation--></table></BODY></HTML>

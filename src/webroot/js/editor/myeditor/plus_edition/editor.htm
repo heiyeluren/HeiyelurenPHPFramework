@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>纯javascript的HTML在线编辑器</title>
+		<script src="script.js" type="text/javascript"></script>
+	</head>
+	<body onload="init();">
+		<textarea id="taContent" rows="8" cols="45"></textarea>
+		<div id="divEditor"></div>
+		<input type="button" name="Button1" value="创建" id="Button1" onclick="setEditorDefaultValue(getTextareaValue());createEditor('divEditor','oEditor','HtmlEditor/index.html');" />
+		<input type="button" name="Button2" value="设置值" id="Button2" onclick="setEditorText('oEditor',document.getElementById('taContent').value);" />
+		<input type="button" name="Button3" value="获取值" id="Button3" onclick="alert(getEditorHTML('oEditor'));" />
+	</body>
+</html>

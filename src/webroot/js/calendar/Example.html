@@ -1,0 +1,31 @@
+
+<!--
+//-------------------
+// 日期js库使用例子
+//------------------
+-->
+<link href="calendar.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE="JavaScript" src="calendar.js"></SCRIPT>
+<input name="begin_date" type="text" class="input_box01" id="begin_date" style="width:60px;">
+<input name="acti_s_date" type="image" id="acti_s_date" title="点击选择日期" src="icon_date.gif" border="0">
+<script type="text/javascript">
+	Calendar.setup({
+	inputField     :    "begin_date",
+	ifFormat       :    "%Y-%m-%d",
+	button         :    "acti_s_date",
+	singleClick    :    true,
+	step           :    1
+});
+</script>
+到
+<input name="end_date" type="text" class="input_box01" id="end_date" style="width:60px;">
+<input name="acti_e_date" type="image" id="acti_e_date" title="点击选择日期" src="icon_date.gif" border="0">
+<script type="text/javascript">
+		Calendar.setup({
+			inputField     :    "end_date",
+			ifFormat       :    "%Y-%m-%d",
+			button         :    "acti_e_date",
+			singleClick    :    true,
+			step           :    1
+		});
+</script>
